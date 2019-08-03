@@ -127,7 +127,7 @@ I2CDriver I2CD3;
 #define QEVENTS 32
 #if QEVENTS > 0
 typedef struct i2cQ_t {
-  uint8_t code;
+  uint16_t code;
   uint8_t state;
   uint16_t param;
 } i2cQ_t;
@@ -931,7 +931,7 @@ doneWriting:
     break;
 	
    case 0:   /* quietly ignore "uninteresting" events (i.e. i2c bus busy) */
-		qEvt(0x0000);
+		qEvt(0x0000, 0);
    break;
    
    default:  /* unhandled event -- abort transaction, flag unknown err */
